@@ -7,11 +7,15 @@ public class Enemies : MonoBehaviour
     public float minSpeed;
     public float maxSpeed;
 
+    Player playerScript;
+
     float speed;
+    public int damage;
 
     // Start is called before the first frame update
     void Start()
     {
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         speed = Random.Range(minSpeed, maxSpeed);
     }
 
@@ -26,6 +30,7 @@ public class Enemies : MonoBehaviour
         if(hitObject.tag == "Player")
         {
             print("Player hit");
+            playerScript.TakeDamage(damage);
         }
     }
 }

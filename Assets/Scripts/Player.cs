@@ -7,6 +7,8 @@ public class Player : MonoBehaviour
     public float speed;
     private float input;
 
+    public int health;
+
     Rigidbody2D rb;
     Animator anim;
 
@@ -51,5 +53,16 @@ public class Player : MonoBehaviour
 
         //Moving the player
         rb.velocity = new Vector2(input * speed, rb.velocity.y);
+    }
+
+    public void TakeDamage(int damageAmount)
+    {
+        health -= damageAmount;
+
+        //destroy player
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
