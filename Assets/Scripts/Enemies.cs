@@ -12,6 +12,8 @@ public class Enemies : MonoBehaviour
     float speed;
     public int damage;
 
+    public GameObject explosion;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,13 +31,15 @@ public class Enemies : MonoBehaviour
     {
         if(hitObject.tag == "Player")
         {
-            print("Player hit");
+            //print("Player hit");
             playerScript.TakeDamage(damage);
+            Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
 
         if(hitObject.tag == "Ground")
         {
+            Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
