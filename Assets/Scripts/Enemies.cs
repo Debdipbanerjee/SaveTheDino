@@ -31,6 +31,12 @@ public class Enemies : MonoBehaviour
         {
             print("Player hit");
             playerScript.TakeDamage(damage);
+            Destroy(gameObject);
+        }
+
+        if(hitObject.tag == "Ground")
+        {
+            Destroy(gameObject);
         }
     }
 }
