@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     {
         //check for keyboard input
         input = Input.GetAxisRaw("Horizontal");
-        print(input);
+        //print(input);
 
         //Moving the player
         rb.velocity = new Vector2(input * speed, rb.velocity.y);
