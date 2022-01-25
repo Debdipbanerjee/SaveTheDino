@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
+    public Text healthDisplay;
+
     public float speed;
     private float input;
 
@@ -17,6 +20,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        healthDisplay.text = health.ToString();
     }
 
     // Update is called once per frame
@@ -58,9 +62,10 @@ public class Player : MonoBehaviour
     public void TakeDamage(int damageAmount)
     {
         health -= damageAmount;
+        healthDisplay.text = health.ToString();
 
         //destroy player
-        if(health <= 0)
+        if (health <= 0)
         {
             Destroy(gameObject);
         }
